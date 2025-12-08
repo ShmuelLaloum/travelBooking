@@ -1,0 +1,314 @@
+body {
+  font-family: "Heebo", sans-serif;
+  margin: 0;
+  direction: rtl;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* מרכז אופקי */
+  justify-content: center; /* מרכז אנכי */
+  height: 90vh; /* גובה כמעט מלא */
+  padding: 0; /* אין מרווחים בצדדים */
+  text-align: center; /* טקסט במרכז */
+  padding-right: 450px;
+}
+
+.booking-container {
+  width: 600px;
+  transform: scale(0.95);
+  display: flex;
+  justify-content: flex-end; /* ימינה */
+  align-items: flex-start; /* קצת למעלה */
+  padding: 60px 0px 0 0;
+  padding-right: 470px;
+}
+.booking-container label {
+  color: #555; /* אפור כהה */
+}
+.booking-container h1 {
+  color: #555; /* אפור כהה */
+}
+
+.rooms-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* מרכזי */
+  justify-content: flex-start; /* קצת למעלה */
+  min-height: 84vh;
+  padding-top: 40px;
+  padding-right: 300px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1470&q=80");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.navbar {
+  width: 97.5%;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-left .logo a {
+  text-decoration: none;
+  font-size: 26px;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-right a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #2c2c2c;
+}
+
+.nav-right a:hover {
+  color: #0077cc;
+}
+
+.cart-icon-container {
+  position: relative;
+  font-size: 24px;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+.btn {
+  background: #0d6efd;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #0b5ed7;
+}
+
+.card {
+  background: white;
+  width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card h2 {
+  margin: 15px 0 5px;
+}
+
+.card p {
+  margin: 0 0 15px;
+  font-weight: 500;
+  color: #444;
+}
+
+.form {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 30px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: right;
+}
+
+.form input {
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.error {
+  color: #d9534f;
+  font-weight: bold;
+  text-align: center;
+}
+
+.roomdetails-container {
+  display: flex;
+  flex-direction: row; /* סדר אופקי */
+  justify-content: center; /* מרכז כל החלקים ביחס למסך */
+  align-items: center; /* מרכז אנכי */
+  padding: 20px 40px; /* קצת רווח מכל צד */
+  min-height: 90vh;
+  gap: 50px; /* רווח בין התמונה לפרטים */
+  box-sizing: border-box;
+  padding-right: 300px;
+}
+
+.roomdetails-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start; /* תוכן שמאלה */
+  max-width: 500px; /* רוחב מקסימלי לטקסט */
+}
+
+.roomdetails-info h1 {
+  margin-bottom: 15px;
+}
+
+.roomdetails-info p {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.room-img {
+  width: 400px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.cart-icon {
+  position: relative;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==============================
+   Container ההזמנות
+   ============================== */
+.orders-container {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* ממורכז באמצע */
+  justify-content: flex-start;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* כותרת */
+.orders-container h1 {
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+}
+
+/* ==============================
+   רשימת הזמנות
+   ============================== */
+.orders-list {
+  display: flex;           /* שימוש ב-Flexbox */
+  flex-direction: row;     /* פריטים בשורה */
+  flex-wrap: wrap;         /* אם לא נכנסים בשורה, יעבור לשורה הבאה */
+  gap: 20px;               /* רווח בין כרטיסים */
+  justify-content: center; /* ממורכז באמצע */
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  max-width: 1200px;       /* רוחב מקסימלי */
+}
+
+/* ==============================
+   כרטיס הזמנה
+   ============================== */
+.order-card {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  padding: 20px;
+  min-width: 250px;       /* רוחב מינימום לכל הזמנה */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+  flex: 1 1 250px;        /* מאפשר גמישות בעת רספונסיב */
+}
+
+/* אפקט hover */
+.order-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+/* כותרות בתוך הכרטיס */
+.order-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #222;
+  font-size: 1.3rem;
+}
+
+/* פסקאות בכרטיס */
+.order-card p {
+  margin: 5px 0;
+  color: #555;
+  font-size: 1rem;
+}
+
+/* הדגשת תוויות */
+.order-card strong {
+  color: #333;
+}
