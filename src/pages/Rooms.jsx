@@ -10,9 +10,9 @@ export default function Rooms() {
       <div
         style={{
           display: "flex",
-          flexWrap: "nowrap" ,
+          flexWrap: "nowrap",
           gap: "25px",
-          overflowX: "auto"  ,
+          overflowX: "auto",
           paddingBottom: "20px",
         }}
       >
@@ -24,7 +24,8 @@ export default function Rooms() {
           >
             <img src={room.picture} alt={room.title} />
             <h2>{room.title}</h2>
-            <p>{room.price}</p>
+
+            <p>{room.price}$/night</p>
 
             <Link to={`/rooms/${room.id}`}>
               <button className="btn">פרטים</button>

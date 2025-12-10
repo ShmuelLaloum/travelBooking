@@ -1,20 +1,8 @@
-import { useEffect, useState } from "react";
-
-export function addToCart(order) {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.push(order);
-  localStorage.setItem("cart", JSON.stringify(cart));
-
-  window.dispatchEvent(new Event("storage"));
-}
+import { useCart } from "../context/CartContext"; // <-- ייבוא הקונטקסט
+import "../App.css";
 
 export default function MyOrders() {
-  const [orders, setOrders] = useState([]);
-
-  useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("cart")) || [];
-    setOrders(saved);
-  }, []);
+  const { orders } = useCart(); // <-- לוקחים את רשימת ההזמנות מה‑Context
 
   return (
     <div className="orders-container">

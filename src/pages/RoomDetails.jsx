@@ -14,7 +14,7 @@ export default function RoomDetails() {
         <h1>{room.title}</h1>
         <p>{room.description}</p>
         <p>
-          <strong>מחיר:</strong> {room.price}
+          <strong>מחיר:</strong> {room.price}$/night
         </p>
 
         <Link to={`/booking?room=${room.id}`}>

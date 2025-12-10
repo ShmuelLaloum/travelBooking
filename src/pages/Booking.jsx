@@ -1,16 +1,62 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate, useLocation } from "react-router-dom";
-import { addToCart } from "./MyOrders";
+import { useCart } from "../context/CartContext";
 import rooms from "../data/rooms.json";
 import "../App.css";
+
+// ======================= פונקציות עזר =======================
+
+// חישוב מספר הלילות
+function calculateNights(from, to) {
+  const start = new Date(from);
+  const end = new Date(to);
+  return (end - start) / (1000 * 60 * 60 * 24);
+}
+
+// קבלת המחיר של חדר לפי ID (עכשיו price הוא מספר)
+function getRoomPrice(roomId) {
+  const room = rooms.find((r) => r.id === Number(roomId));
+  if (!room) return 0;
+  return room.price; // ⬅️ לא צריך replace
+}
+
+// ולידציה של הטופס
+function validateForm(form) {
+  const fromDate = new Date(form.from);
+  const toDate = new Date(form.to);
+
+  if (!form.room) return "אנא בחר חדר להזמנה";
+  if (toDate <= fromDate) return "תאריך יציאה חייב להיות אחרי תאריך הגעה!";
+
+  return "";
+}
+
+// יצירת אובייקט להזמנה
+function createOrderObject(form) {
+  const room = rooms.find((r) => r.id === Number(form.room));
+  const nights = calculateNights(form.from, form.to);
+  const pricePerNight = getRoomPrice(form.room);
+
+  return {
+    name: form.name,
+    from: form.from,
+    to: form.to,
+    guests: form.guests,
+    room: room.title,
+    nights: nights,
+    totalPrice: nights * pricePerNight,
+  };
+}
+
+// ======================= קומפוננטת Booking =======================
 
 export default function Booking() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { addToCart } = useCart();
 
-  // קריאת חדר מ־URL
   const params = new URLSearchParams(location.search);
   const selectedRoomId = params.get("room");
 
@@ -19,35 +65,33 @@ export default function Booking() {
     from: "",
     to: "",
     guests: 1,
-    room: selectedRoomId || "",  // החדר ייכנס אוטומטית
+    room: selectedRoomId || "",
   });
 
   const [error, setError] = useState("");
 
   function handleChange(e) {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  }
+  const { name, value } = e.target;
+
+  setForm({
+    ...form,
+    [name]: name === "guests" ? Number(value) : value,
+  });
+}
+
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    const from = new Date(form.from);
-    const to = new Date(form.to);
-
-    if (to <= from) {
-      setError("תאריך יציאה חייב להיות אחרי תאריך הגעה!");
-      return;
-    }
-
-    if (!form.room) {
-      setError("אנא בחר חדר להזמנה");
+    const errorMsg = validateForm(form);
+    if (errorMsg) {
+      setError(errorMsg);
       return;
     }
 
     setError("");
 
-    const roomData = rooms.find(r => r.id === Number(form.room));
-    const nights = (to - from) / (1000 * 60 * 60 * 24);
+    const order = createOrderObject(form);
 
     toast.success("ההזמנה נשלחה בהצלחה!", {
       position: "top-center",
@@ -55,16 +99,7 @@ export default function Booking() {
       theme: "colored",
     });
 
-    // שמירה לעגלה
-    addToCart({
-      name: form.name,
-      from: form.from,
-      to: form.to,
-      guests: form.guests,
-      room: roomData.title,
-      nights: nights,
-      totalPrice: nights * Number(roomData.price.replace("$/night", "")),
-    });
+    addToCart(order);
 
     setTimeout(() => navigate("/"), 2000);
   }
@@ -77,9 +112,9 @@ export default function Booking() {
         <label>בחר חדר:</label>
         <select name="room" value={form.room} onChange={handleChange}>
           <option value="">בחר חדר...</option>
-          {rooms.map(r => (
+          {rooms.map((r) => (
             <option key={r.id} value={r.id}>
-              {r.title} – {r.price}
+              {r.title} – {r.price}$/night
             </option>
           ))}
         </select>

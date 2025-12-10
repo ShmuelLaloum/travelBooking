@@ -7,8 +7,8 @@ export default function Home() {
       <h1>ברוכים הבאים לאתר ההזמנות</h1>
       <p>בחרו חדר והתחילו את החופשה שלכם</p>
 
-      <Link to="/rooms">
-        <button className="btn">לצפייה בחדרים</button>
+      <Link to="/rooms" className="btn-link">
+        לצפייה בחדרים
       </Link>
     </div>
   );

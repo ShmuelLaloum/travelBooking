@@ -2,21 +2,21 @@
   {
     "id": 1,
     "title": "חדר פשוט",
-    "price": "300$/night",
+    "price": "300",
     "description": "חדר נעים וקומפקטי עם מיטה זוגית, חדר רחצה פרטי ומקלחת. מתאים לזוגות או ליחיד.",
     "picture": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85"
   },
   {
     "id": 2,
     "title": "חדר קלאסי",
-    "price": "600$/night",
+    "price": "600",
     "description": "חדר מרווח יותר עם מיטה זוגית גדולה, טלוויזיה ושולחן עבודה. אווירה ביתית ונוחה.",
     "picture": "https://images.unsplash.com/photo-1611892440504-42a792e24d32"
   },
   {
     "id": 3,
     "title": "חדר פרימיום",
-    "price": "900$/night",
+    "price": "900",
     "description": "חדר יוקרתי עם מיטה קינג-סייז, נוף, עיצוב מודרני ולוקס. מתאים לשהייה מפנקת במיוחד.",
     "picture": "https://images.unsplash.com/photo-1561501900-3701fa6a0864"
   }
